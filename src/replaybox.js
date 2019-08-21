@@ -6,7 +6,7 @@ import ReactAudioPlayer from 'react-audio-player'
 import blobToBuffer from 'blob-to-buffer'
 
 import  axios, { post } from 'axios';
-export default class CommentBox extends Component {
+export default class ReplayBox extends Component {
   
   constructor(props) {
     super(props);
@@ -22,14 +22,12 @@ export default class CommentBox extends Component {
     this.setState({comment:event.target.value})
   }
 
-
-
   onFormSubmit(e){
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
 
-      fetch('http://localhost:3001/addTopic', {
+      fetch('http://localhost:3001/addComment', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -37,9 +35,9 @@ export default class CommentBox extends Component {
         },
         body: JSON.stringify({
           filename:response.data.filename,
-          tag:"DC",
           path:response.data.path,
-          comment:this.state.comment
+          comment:this.state.comment,
+          id:this.props.id
         })
       }).then(response =>{
         console.log(response)
@@ -74,19 +72,18 @@ export default class CommentBox extends Component {
     } = this.state
 
     return (
-      <div>
+      <div >
      
-
-     
-          <div style ={{display:"flex",flexDirection:"row"}}>
+          <div style ={{display:"flex",flexDirection:"row" }} > 
             <Recorder
               onRecordingComplete={this._onRecordingComplete}
               onRecordingError={this._onRecordingError}
-
+              style={{}}
+              
             />
 
 
-            {url && (
+{url && (
               <div style ={{display:"flex",flexDirection:"row",marginLeft:"10px"}}>
                 <ReactAudioPlayer
                   src={url}
@@ -106,7 +103,6 @@ export default class CommentBox extends Component {
              
 
             )}
-             
             
           </div>
         </div>

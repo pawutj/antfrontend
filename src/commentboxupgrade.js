@@ -3,8 +3,11 @@ import CommentBox from "./commentbox"
 
 const CommentBoxUpgrade = props => {
     return (
-        <div>
+        <div style ={{margin:"10px"}}>
+            
+           
             <CommentBox />
+           
         </div>
     )
 }
