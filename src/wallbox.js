@@ -15,7 +15,7 @@ const WallBox = props => {
 
             </div>
             <div style = {{marginLeft:"100px"}}>
-          <div style = {{backgroundColor:"#F6EEEE" ,height:"20px",paddingLeft:"20px",width:"300px",borderRadius:"10px",marginLeft:"30px",marginTop:"40px"}}>
+          <div style = {{backgroundColor:"#F6EEEE" ,height:"20px",paddingLeft:"20px",width:"300px",borderRadius:"10px",marginLeft:"30px",marginTop:""}}>
           <p>{props.comment}</p>
           </div>
         
@@ -25,7 +25,7 @@ const WallBox = props => {
                   src={props.url}
                   controls
                   style={{
-                    width:"450px",
+                    width:"420px",
                     height:"23px"
                   }}
                 />

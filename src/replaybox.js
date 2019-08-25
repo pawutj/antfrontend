@@ -83,26 +83,26 @@ export default class ReplayBox extends Component {
             />
 
 
-{url && (
-              <div style ={{display:"flex",flexDirection:"row",marginLeft:"10px"}}>
+
+<div style ={{display:"flex",flexDirection:"row",marginLeft:"10px"}}>
                 <ReactAudioPlayer
                   src={url}
                   controls
                   style={{
-                    minWidth: '500px'
+                    width:"200px",
+                    height:"20px",
+                    marginTop:"10px"
                   }}
                 />
-            <br></br>
+
           
-              <input placeholder ="Comment" style = {{margin:"10px",marginLeft:"10px"}}  onChange = {(e) => this.commentChange(e)} value = {this.state.comment}/>
-              <form onSubmit={this.onFormSubmit} style = {{marginTop:"20px"}}>
-                <button type="submit"  >Upload</button>
+             
+              <form onSubmit={this.onFormSubmit} style = {{marginTop:"10px"}}>
+                <button type="submit"  
+                  style = {{width:"50px",backgroundColor:"#9F9F9F",boxShadow:"0px 4px 4px rbga(0,0,0,0.59),",borderRadius:"10px" ,height:"20px"}}  >
+                    ยืนยัน</button>
               </form>
               </div>
-
-             
-
-            )}
             
           </div>
         </div>
