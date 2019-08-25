@@ -2,7 +2,7 @@ import React, { Component,useState } from 'react'
 
 import Recorder from 'react-mp3-recorder'
 import ReactAudioPlayer from 'react-audio-player'
-
+import {urlValue} from './util.js'
 import blobToBuffer from 'blob-to-buffer'
 
 import  axios, { post } from 'axios';
@@ -27,7 +27,7 @@ export default class ReplayBox extends Component {
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
 
-      fetch('http://localhost:3001/addComment', {
+      fetch(`${urlValue}/addComment`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -47,8 +47,8 @@ export default class ReplayBox extends Component {
     })
   }
   fileUpload(file){
-    const url = "http://localhost:3001/upload";
-    // const url = "https://ec2-18-138-248-26.ap-southeast-1.compute.amazonaws.com:3001/upload"
+    // const url = "http://localhost:3001/upload";
+    const url = `${urlValue}/upload`
     const formData = new FormData();
     formData.append('file',file)
     const config = {

@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player'
 import ReplayBox from './replaybox'
+import {urlValue} from './util.js'
 const WallBox = props => {
   const [commentOn, setCommentOn] = useState(false);
     return (
       <div>
         <div>
           {/* <p>ID {props.id}</p> */}
-          <div onClick = {() => setCommentOn(!commentOn)}>
-          <div style = {{backgroundColor:"#EEEEEE" ,height:"30px",paddingLeft:"20px",width:"300px",marginLeft:"50px"}}>
+          <div style = {{display:"flex"}}>
+            
+            <div  style = {{width:"80px",height:"80px",position:"absolute",backgroundColor:"#F6EEEE",borderRadius: "80px" ,marginTop:"15px",marginLeft:"10px"}}>
+
+
+            </div>
+            <div style = {{marginLeft:"100px"}}>
+          <div style = {{backgroundColor:"#F6EEEE" ,height:"20px",paddingLeft:"20px",width:"300px",borderRadius:"10px",marginLeft:"30px",marginTop:"40px"}}>
           <p>{props.comment}</p>
           </div>
         
-         <div style = {{}}>
-             <div style = {{backgroundColor:"#C4C4C4",width:"520px"}}>
+         <div style = {{backgroundColor:"#F6EEEE",padding:"3px",borderRadius:"3px"}}>
+             <div style = {{}}>
              <ReactAudioPlayer
                   src={props.url}
                   controls
                   style={{
-                    width:"500px",
-                    height:"50px"
+                    width:"450px",
+                    height:"23px"
                   }}
                 />
               
@@ -33,7 +40,7 @@ const WallBox = props => {
                    <p>{t.comment} </p>
                    </div>
                  <ReactAudioPlayer
-                 src={ `http://localhost:3001/uploads/${t.filename}`}
+                 src={ `${urlValue}/uploads/${t.filename}`}
                  controls
                  style={{
                    width: '400px'
@@ -53,7 +60,7 @@ const WallBox = props => {
               </div>
             }  
            
-
+           </div>
             </div>
         
     )

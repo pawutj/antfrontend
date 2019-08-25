@@ -4,7 +4,7 @@ import Recorder from 'react-mp3-recorder'
 import ReactAudioPlayer from 'react-audio-player'
 
 import blobToBuffer from 'blob-to-buffer'
-
+import {urlValue} from './util.js'
 import  axios, { post } from 'axios';
 export default class CommentBox extends Component {
   
@@ -29,7 +29,7 @@ export default class CommentBox extends Component {
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
 
-      fetch('http://localhost:3001/addTopic', {
+      fetch(`${urlValue}/addTopic`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -39,7 +39,7 @@ export default class CommentBox extends Component {
           filename:response.data.filename,
           tag:"DC",
           path:response.data.path,
-          comment:this.state.comment
+          comment:this.props.storyAgg
         })
       }).then(response =>{
         console.log(response)
@@ -49,8 +49,8 @@ export default class CommentBox extends Component {
     })
   }
   fileUpload(file){
-    const url = "http://localhost:3001/upload";
-    // const url = "https://ec2-18-138-248-26.ap-southeast-1.compute.amazonaws.com:3001/upload"
+    // const url = "http://localhost:3001/upload";
+    const url = `${urlValue}/upload`
     const formData = new FormData();
     formData.append('file',file)
     const config = {
@@ -86,26 +86,30 @@ export default class CommentBox extends Component {
             />
 
 
-            {url && (
+            
               <div style ={{display:"flex",flexDirection:"row",marginLeft:"10px"}}>
                 <ReactAudioPlayer
                   src={url}
                   controls
                   style={{
-                    minWidth: '500px'
+                    width:"400px",
+                    height:"35px",
+                    marginTop:"10px"
                   }}
                 />
-            <br></br>
+
           
-              <input placeholder ="Comment" style = {{margin:"10px",marginLeft:"10px"}}  onChange = {(e) => this.commentChange(e)} value = {this.state.comment}/>
-              <form onSubmit={this.onFormSubmit} style = {{marginTop:"20px"}}>
-                <button type="submit"  >Upload</button>
+             
+              <form onSubmit={this.onFormSubmit} style = {{marginTop:"10px"}}>
+                <button type="submit"  
+                  style = {{width:"90px",backgroundColor:"#9F9F9F",boxShadow:"0px 4px 4px rbga(0,0,0,0.59),",borderRadius:"10px" ,height:"35px"}}  >
+                    ยืนยัน</button>
               </form>
               </div>
 
              
 
-            )}
+          
              
             
           </div>
