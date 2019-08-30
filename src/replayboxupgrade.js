@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReplayBox from "./replaybox.js"
-
+import './App.css'
+import './index.css'
 const ReplayBoxUpgrade = props =>{
     
     const [storyAgg,setStoryAgg] = useState("")
@@ -21,7 +22,8 @@ const ReplayBoxUpgrade = props =>{
                 <button style = {{width:"50px",backgroundColor:"#9F9F9F",boxShadow:"0px 4px 4px rbga(0,0,0,0.59),",borderRadius:"10px"}}>ยืนยัน</button>
             </div>
             <div style = {{marginLeft:"60px",marginTop:"10px"}}>
-            <ReplayBox />
+            <ReplayBox id = {props.id}/>
+            
             </div>
             </div>
  

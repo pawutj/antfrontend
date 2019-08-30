@@ -1,11 +1,12 @@
 import React, { Component,useState } from 'react'
-
+import './App.css'
 import Recorder from 'react-mp3-recorder'
 import ReactAudioPlayer from 'react-audio-player'
 
 import blobToBuffer from 'blob-to-buffer'
 import {urlValue} from './util.js'
 import  axios, { post } from 'axios';
+import './index.css'
 export default class CommentBox extends Component {
   
   constructor(props) {

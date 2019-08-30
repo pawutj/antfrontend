@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player'
 import ReplayBox from './replaybox'
 import {urlValue} from './util.js'
+import './App.css'
+import './index.css'
+import ant1 from './img/1.png'
+import ant2 from './img/2.png'
 const WallBox = props => {
   const [commentOn, setCommentOn] = useState(false);
     return (
@@ -10,9 +14,14 @@ const WallBox = props => {
           {/* <p>ID {props.id}</p> */}
           <div style = {{display:"flex"}}>
             
-            <div  style = {{width:"80px",height:"80px",position:"absolute",backgroundColor:"#F6EEEE",borderRadius: "80px" ,marginTop:"15px",marginLeft:"10px"}}>
-
-
+            <div  style = {{width:"80px",height:"80px",position:"absolute",backgroundColor:`${props.ant==1?"#F6EEEE":"#000000"}`,borderRadius: "80px" ,marginTop:"15px",marginLeft:"10px"}}>
+              {
+              props.ant==1?  
+              <img  src = {ant1} width = {"50px"} style = {{marginTop:"30px",marginLeft:"10px"}}/>:
+        
+              <img  src = {ant2} width = {"50px"} style = {{marginTop:"15px",marginLeft:"15px"}}/>
+              
+              }
             </div>
             <div style = {{marginLeft:"100px"}}>
           <div style = {{backgroundColor:"#F6EEEE" ,height:"20px",paddingLeft:"20px",width:"300px",borderRadius:"10px",marginLeft:"30px",marginTop:""}}>

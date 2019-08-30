@@ -1,10 +1,10 @@
 import React, { Component,useState } from 'react'
-
+import './App.css'
 import Recorder from 'react-mp3-recorder'
 import ReactAudioPlayer from 'react-audio-player'
 import {urlValue} from './util.js'
 import blobToBuffer from 'blob-to-buffer'
-
+import './index.css'
 import  axios, { post } from 'axios';
 export default class ReplayBox extends Component {
   

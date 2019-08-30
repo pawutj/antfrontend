@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import WallBox from "./wallbox.js"
 import ReplayBox from "./replaybox"
 import {urlValue} from "./util.js"
-const Wall = ({setPostID}) =>{
+import './App.css'
+import './index.css'
+const Wall = ({setPostID,setReplayValue}) =>{
     
     const [wallValue,setWallValue] = useState([])
     const [postValue,setPostValue] = useState(-1)
+   
     useEffect (() => {
         fetch(`${urlValue}/topicList`)
             .then(response => response.json())
@@ -22,11 +25,12 @@ const Wall = ({setPostID}) =>{
             {
                 wallValue.map( (c,i) => (
                     <div style = {{...{width:"640px",height:"120px",margin:"2px",borderRadius:"10px",display:"flex"},...{border:i==postValue?"1px solid #FFF8F8":"1px solid #3E3D3D"} }}>
-                    <WallBox url = {`${urlValue}/uploads/${c.filename}`} id = {c.id} replay = {c.replay} comment = {c.comment}/>
+                    <WallBox url = {`${urlValue}/uploads/${c.filename}`} id = {c.id} replay = {c.replay} comment = {c.comment} ant = "1" />
                     <div>
                     <button style = {{backgroundColor:"#000000",color:"#FFFFFF",borderRadius:"10px",marginTop:"33px"}} onClick = {e => {
                         setPostValue(i)
                         setPostID(c.id)
+                        setReplayValue(c.replay)
                             }} >
                                 <p style = {{fontSize:"10px"}}>COMMENT...</p></button>
                     </div>
